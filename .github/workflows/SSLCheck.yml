@@ -4,8 +4,8 @@ on:
   push:
     branches: 
       - master
-  #schedule:
-    #- cron: '0 16 * * *' 
+  schedule:
+    - cron: '0 16 * * *' 
 
 jobs:
   CheckSSL:
@@ -30,13 +30,13 @@ jobs:
       run: |
         TZ='Asia/Shanghai'; export TZ
         npm i
-        git clone https://github.com/yfun-lab/CheckSSL --depth=2
+        git clone https://github.com/Guangsudalao/CheckSSL --depth=2
         npm run build
         cd CheckSSL
         chmod +x checker.sh
-        ./checker.sh yfun.top www.yfun.top blog.yfun.top ssl.yfun.top cdn.yfun.top cfp.yfun.top drive.yfun.top gdrive.yfun.top gravatar.yfun.top note.yfun.top page.yfun.top t.yfun.top waline.blog.yfun.top twikoo.blog.yfun.top proxy.yfun.top github.yfun.top dqjs-proxy.vercel.app hifun.js.org start.yfun.top cky.ink 
+        ./checker.sh dlya.top www.dlya.top blog.dlya.top ssl.dlya.top cdn.dlya.top static.dlya.top file.dlya.top avatar.dlya.top pan.dlya.top playing.dlya.top waline.dlya.top 
         cp -rf ./output/ct.json ../public/ct.json
-        echo "ssl.yfun.top" > ../public/CNAME
+        echo "ssl.dlya.top" > ../public/CNAME
         
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
